@@ -31,7 +31,8 @@ Meteor.startup ->
           releaseDate: new Date '24 September 1999'
           rating: 8
           summary: "Spaced is a sitcom like no other. The premise is simple enough: Daisy (Jessica Stevenson) and Tim (Simon Pegg) are out of luck and love, so pretend to be a couple in order to rent a flat together."
-          images: 
+          images:
+            background: 'http://thetvdb.com/banners/fanart/original/72658-2.jpg'
             frontCover: 'http://thetvdb.com/banners/_cache/posters/72658-1.jpg'
           url: 'http://thetvdb.com/index.php?tab=series&id=72658'
         download: 

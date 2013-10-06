@@ -40,7 +40,7 @@
 
 <template name="downloads">
   <div class="container">
-    <h2>Downloads</h2>
+    <h2><i class="icon-cloud-download"></i> Downloads</h2>
     <div class="download-list row">
       {{#each download}}
         <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
@@ -50,6 +50,9 @@
               </div>
             {{/if}}
             <div class="panel-heading">
+              {{#if icon}}
+                <i class="icon-{{icon}} icon-2x  pull-right"></i>
+              {{/if}}
               <h3 class="panel-title">{{title}}</h3>
               {{#if subtitle}}
                 {{subtitle}}

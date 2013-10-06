@@ -1,5 +1,6 @@
 Template.downloads.download = => 
-  _.map @Downloads.find().fetch(), (item) ->
+  sort = [['status', 'asc'],['download.progress', 'desc']]
+  _.map @Downloads.find({}, { sort: sort }).fetch(), (item) ->
     item.class = -> 
       switch item.status
         when 'completed' then 'success'
@@ -7,6 +8,12 @@ Template.downloads.download = =>
         when 'pending' then 'warning'
         when 'failed' then 'danger'
         else 'default'
+
+    item.icon = ->
+      switch item.metadata?.type
+        when 'film' then 'film'
+        when 'series', 'episode' then 'desktop'
+        when 'album', 'song' then 'music'
 
     item.title = -> 
       item.metadata?.title or 'Awaiting metadata...'
@@ -27,6 +34,8 @@ Template.downloads.download = =>
           ].join ''
         when 'album'
           data?.albumArtist or 'Album'
+        when 'song'
+          data?.artist or data?.album
         else 'Other'
 
     item.panelImage = ->
