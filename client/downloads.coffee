@@ -35,6 +35,6 @@ Template.downloads.download = =>
       JSON.stringify (images.screenshot or images.background or images.banner or images.frontCover or '')
 
     item.displayProgressBar = ->
-      item.status in ['downloading', 'error', 'paused', 'completed']
+      item.status in ['downloading', 'error', 'paused']
 
     return item
