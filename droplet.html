@@ -1,0 +1,91 @@
+<head>
+  <title>Droplet</title>
+</head>
+
+<body>
+  {{> toolbar}}
+  {{#isolate}}
+
+    {{renderPage}}
+  {{/isolate}}
+</body>
+
+<template name="toolbar">
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">{{ title }}</a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-main-collapse">
+      <ul class="nav navbar-nav">
+        {{#each menuItem}}
+          <li class="{{#if active}}active{{/if}}">
+            <a href="{{url}}">
+              {{text}} 
+              {{#if count}}
+                <span class="badge">{{count}}</span>
+              {{/if}}
+            </a>
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </nav>
+</template>
+
+<template name="downloads">
+  <h1>Downloads</h1>
+
+  <div class="download-list">
+    {{#each download}}
+      <div class="download panel panel-default">
+        <div class="panel-heading clearfix">
+          <h3 class="panel-title pull-left">
+            {{name}}
+            {{> download-type-icon}}
+            {{> download-source-icon}}
+          </h3>
+        </div>
+        <div class="panel-body collapse">
+          {{> download-progress-bar}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</template>
+
+<template name="download-type-icon">
+  {{#if content.type}}
+    <span class="badge download-type-icon">
+      {{content.type}}
+    </span>
+  {{/if}}
+</template>
+
+<template name="download-source-icon">
+  {{#if download.type}}
+    <span class="badge download-source-icon">
+      {{download.type}}
+    </span>
+  {{/if}}
+</template>
+
+<template name="download-progress-bar">
+  <div class="progress">
+    {{#if download.progress}}
+      <div class="progress-bar" style="width: {{download.progress}}%;">
+        <span class="sr-only">{{download.progress}}% complete</span>
+      </div>
+    {{/if}}
+  </div>
+</template>
+
+<template name="other">
+  <h1>Other Page</h1>
+</template>
